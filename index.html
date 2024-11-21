@@ -4,16 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GuessTheUCI</title>
-    <link rel="stylesheet" type="text/css" href=".styles.css"/>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
 </head>
 <body>
     <h1>Guess The UCI</h1>
     <h2>Class: _______</h2><!--FIX: add in js or api call-->
+
     <form action="/Website_name"><!--FIX: replace Website_name with js file-->
-        <h>Guess the average GPA for the above class: 
+        <div id="guesses-container">
+            <div class="guess-container" id="guess-1"></div>
+            <div class="guess-container" id="guess-2"></div>
+            <div class="guess-container" id="guess-3"></div>
+            <div class="guess-container" id="guess-4"></div>
+            <div class="guess-container" id="guess-5"></div>
+            <div class="guess-container" id="guess-6"></div>
+        </div>
+
+        <p class="guess-gpa">Guess the average GPA for the above class: 
             <input type="text" name="guess" placeholder="EX: 3.5">
             <button type="submit">Submit</button>
-        </h>
+        </p>
     </form>
     <!--FIX: implement some sort of output to respond back to user-->
     
