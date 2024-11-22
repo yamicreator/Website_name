@@ -1,4 +1,4 @@
-# Irvinedle
+# IRVINEDLE
 Weclome to UCI's very own Wordle spin off!
 
 The goal of the game is to try to guess the GPA of some popular classes at UCI. 
