@@ -116,8 +116,7 @@ h1 {
   font-weight: 600;
   font-style: italic;
   color: var(--light-gray);
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin: 25px 25px 25px 25px;
 }
 
 /* Button styling */
