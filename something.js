@@ -71,16 +71,20 @@ function parseResults(result) {
 var winMessage = document.createElement("div");
 
 // Variable definitions
-guessCount = 1;
-maxGuesses = 6;
+var guess = document.getElementById("guess");
+var guessCount = 1;
+var maxGuesses = 6;
+var winStatus = false;
 
 // Function definitions
 function wrong_guess(x) {
-  // User exceeded max_guesses
-  if (guessCount >= maxGuesses) {
-    winMessage.innerHTML = "YOU LOSE :(";
-    document.getElementById("win-message").appendChild(winMessage);
-  } else {
+  if (winStatus == false) {
+    // User exceeded maxGuesses
+    if (guessCount >= maxGuesses) {
+      winMessage.innerHTML = "YOU LOSE :(";
+      document.getElementById("win-message").appendChild(winMessage);
+    }
+
     // Create new div element for wrong guess
     var newGuess = document.createElement("div");
     newGuess.setAttribute("class", "wrong-guess");
@@ -90,9 +94,11 @@ function wrong_guess(x) {
 
     // Print guess in appropriate box
     if (x.value < course.averageGPA) {
-      newGuess.innerHTML = "<p>" + x.value + " ⬆️ (too low) </p>";
+      newGuess.innerHTML =
+        "<p class='guess-inner'>" + x.value + " ⬆️ (too low) </p>";
     } else {
-      newGuess.innerHTML = "<p>" + x.value + " ⬇️ (too high) </p>";
+      newGuess.innerHTML =
+        "<p class='guess-inner'>" + x.value + " ⬇️ (too high) </p>";
     }
 
     // Append new div to old div
@@ -104,16 +110,9 @@ function wrong_guess(x) {
 }
 
 function modify_guess_fields() {
-  // Modify win message (singular/plural) based on guessCount
-  if (guessCount == 1) {
-    winMessage.innerHTML = "YOU WIN! You took " + guessCount + " guess! 🎉";
-  } else {
-    winMessage.innerHTML = "YOU WIN! You took " + guessCount + " guesses! 🎉";
-  }
-
   if (guess.value != course.averageGPA) {
     wrong_guess(document.getElementById("guess"));
-  } else {
+  } else if (winStatus == false) {
     // Create new div element for wrong guess
     var newGuess = document.createElement("div");
     newGuess.setAttribute("class", "wrong-guess");
@@ -132,5 +131,17 @@ function modify_guess_fields() {
     console.log(winMessage);
 
     document.getElementById("win-message").appendChild(winMessage);
+  }
+
+  if (guess.value == course.averageGPA) {
+    // Set winStatus to true
+    winStatus = true;
+
+    // Modify win message (singular/plural) based on guessCount
+    if (guessCount == 1) {
+      winMessage.innerHTML = "YOU WIN! You took " + guessCount + " guess! 🎉";
+    } else {
+      winMessage.innerHTML = "YOU WIN! You took " + guessCount + " guesses! 🎉";
+    }
   }
 }
