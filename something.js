@@ -1,7 +1,7 @@
 const gradeUrl = "https://anteaterapi.com/v2/rest/grades/aggregateByCourse";
 const courseUrl = "https://anteaterapi.com/v2/rest/courses/";
 
-// retrieves grade data from anteater api
+// retrieves grade data from anteater api using a url
 async function getData(url) {
   let data;
   const options = { method: "GET" };
@@ -17,7 +17,7 @@ async function getData(url) {
 
 // retrieves data about a random course (name + description)
 // and calls organize to add all the relevant data to a json object
-function getCourse(gradeData) {
+async function getCourse(gradeData) {
   if (gradeData["ok"]) {
     let index = Math.floor(Math.random() * gradeData.data.length);
     while (gradeData.data[index].averageGPA === null) {
@@ -31,11 +31,13 @@ function getCourse(gradeData) {
     url = courseUrl + id;
 
     // calls organize on data retrieved using the url
-    getData(url).then((result) => organize(result, gradeData.data[index]));
+    // returns this promise so that we can make sure all promises are resolved
+    // before starting the game
+    return getData(url).then(result => organize(result, gradeData.data[index]));
   }
 }
 
-//using courseData and gradeData tries to create an object with only the things we need
+//using courseData and gradeData, creates an object with only the things we need
 function organize(result, grades) {
   if (result["ok"]) {
     courseInfo = {};
@@ -49,7 +51,22 @@ function organize(result, grades) {
   return null;
 }
 
-getData(gradeUrl).then(parseResults);
+// please ignore my desperation when writing this function
+// this function returns a Promise containing all the other relevant
+// Promises so that we can make sure stuff only happens after all the
+// data we need has been fetched
+async function please()
+{
+  p1 = getData(gradeUrl);
+  let p2 = p1.then(getCourse);
+  console.log(p2);
+  return Promise.all([p1, p2])
+}
+
+// Using the bigger Promise from please(), we call parseResults(),
+// which does stuff with all of the data that we now actually have
+// in time to do stuff with it
+please().then(result => parseResults());
 
 function parseResults(result) {
   getCourse(result);
