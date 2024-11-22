@@ -1,5 +1,5 @@
 # IRVINDLE
-Play the game here: https://irvindle.pages.dev/
+Play the game [here](https://irvindle.pages.dev/)!
 
 ***
 
