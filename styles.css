@@ -1,77 +1,137 @@
+:root {
+  /* Color variables */
+  --UCI-blue: #255799;
+  --UCI-gold: #fecc07;
+  --light-blue-gray: #3a3e4c;
+  --blue-gray: #22252f;
+  --turquoise: #64c4d3;
+  --orange: #f78d2d;
+  --dark-gray: #555759;
+  --light-gray: #c6beb5;
 
+  /* Element width */
+  --width: calc(200px + 20vw);
+}
 
 body {
-    background: #f7f1f1;
-    color: black;
+  background: var(--blue-gray);
+  color: var(--turquoise);
+  font-family: "Montserrat", Helvetica, sans-serif;
+}
+
+#DLE {
+  color: var(--orange);
 }
 
 #p {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-right: 150px;
-    margin-left: 80px;
-
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
 }
 
 h1 {
-    text-align: center;
-    font-family: "Montserrat", sans-serif;
-    margin-top: 25px;
-    margin-bottom: 40px;
-    letter-spacing: 0.02em;
-    font-size: 48px;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 25px;
+  margin-bottom: 40px;
+  letter-spacing: 0.02em;
+  font-size: 48px;
+  color: var(--light-gray);
 }
 
+#random-course {
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  margin: 40px auto 40px auto;
+  border-radius: 8px;
+  border: 2px solid var(--turquoise);
+  width: var(--width);
+}
 
 .button {
-    align-items: center;
-    border: 3px solid black;
-    font-size: 1.5em;
-    font-family: "Montserrat", sans-serif;
-    color: #ffffff;
-    display: inline-block;
-    margin: 3px 5px;
+  align-items: center;
+  border: 3px solid black;
+  font-size: 1.5em;
+  display: inline-block;
+  margin: 3px 5px;
 }
 
 #guesses-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    width: 324px;
-    height: 275px;
-    padding: 3px;
-    border-radius: 8px;
-    background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  height: 275px;
+  padding: 3px;
+  border-radius: 8px;
+  background-color: transparent;
 
-    margin: auto;
-    width: 50%;
-
+  margin: auto;
+  width: var(--width);
 }
 
 .guess-container {
-    display: flex;
-    overflow: hidden;
-    flex: 1;
-    flex-direction: row;
-    margin-bottom: 5px;
-    border-radius: 8px;
-    background-color: rgb(173, 210, 255);
+  display: flex;
+  overflow: hidden;
+  flex: 1;
+  flex-direction: row;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  background-color: var(--UCI-gold);
 }
 
 .guess-num {
-    
-    text-align: center;
+  text-align: center;
 }
 
 .guess-gpa {
-    text-align: center;
+  text-align: center;
 }
 
-h2 {
-    text-align: center;
-    font-family: "Montserrat", sans-serif;
-    letter-spacing: 0.05em;
-    line-height: 1.5;
-    margin: 60px auto 40px auto;
+.wrong-guess {
+  font-weight: 600;
+  color: var(--blue-gray);
+  margin: 0 auto;
+}
+
+#win-message {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  text-decoration: underline;
+  color: var(--light-gray);
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+/* Button styling */
+button {
+  background-color: var(--UCI-gold);
+  color: var(--light-blue-gray);
+  font-family: "Montserrat", Helvetica, sans-serif;
+  font-weight: 600;
+}
+
+button:active {
+  background-color: #e0b300;
+  color: var(--blue-gray);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input {
+  margin-right: 4px;
+}
+
+button,
+input {
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 4px;
+  border: none;
 }
